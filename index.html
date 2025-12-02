@@ -10,6 +10,7 @@
       padding: 0;
       height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       font-family: Georgia, serif;
@@ -22,6 +23,14 @@
       letter-spacing: 3px;
       text-transform: lowercase;
       color: #000;
+      margin-bottom: 10px;
+    }
+
+    .click-text {
+      font-size: 1.8rem;
+      color: #000;
+      cursor: pointer;
+      text-decoration: underline;
     }
 
     .corner-text {
@@ -32,13 +41,86 @@
       font-family: monospace;
       color: #000;
     }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      max-width: 700px;
+      max-height: 80vh;
+      overflow-y: auto;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 8px;
+    }
+
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
 
   <div class="center-text">ojos de perro azul</div>
 
+  <div class="click-text" id="openModal">Murámonos</div>
+
   <div class="corner-text">l____</div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeModal">&times;</span>
+
+      <p><strong>Abteilung 33</strong></p>
+
+      <p>En esta vida, hay que nacer y morir varias veces.<br>
+      ¿Por qué?</p>
+
+      <p>Yo creo que uno gasta la vida de tanto usarla, y hay momentos en la existencia donde uno siente que está agotada, que ya no puede más. Entonces uno se repite de mala manera, ama de manera similar, elige parejas parecidas, comete los mismos errores, parece estar dando vueltas y vueltas en un vértigo dentro de un laberinto interminable, hasta que llega un momento en el que uno se detiene y dice: "No puedo más… no puedo seguir con esto. No puedo." De alguna manera, uno siente que está fingiendo, siente que ese que ha sido durante tanto tiempo, ya no es.</p>
+
+      <p>Y hay gente que se dedica a defender ese cadáver, a defender ese muerto, gente que carga ese muerto de por vida y le da miedo morirse. Yo le recomendaría a la gente: déjese morir, muérase. Deje ese personaje atrás; no pasa nada, no tenga miedo. No le tenga miedo a morirse, y reinvéntese. Reinvéntese con otras categorías, con otros gustos, con otros deseos, con otras formas de amar. Yo creo que a lo largo de la vida hay que aprender a morir muchas veces. De lo contrario, uno empieza a repetirse y a repetirse, y esa gente que de tanto repetirse se parece mucho a sí misma, son idénticos a sí mismos, cada vez se parecen más, y eso es horrible, eso es una fatiga y eso también demuestra una falta de riqueza y de generosidad con el mundo.</p>
+
+      <p>Yo creo que lo más sabio es intuir bien, reconocer esos momentos y morirse.</p>
+
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const openModal = document.getElementById("openModal");
+    const closeModal = document.getElementById("closeModal");
+
+    openModal.onclick = () => {
+      modal.style.display = "flex";
+    };
+
+    closeModal.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
 
 </body>
 </html>
