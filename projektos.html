@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PROJEKTOS</title>
+
+<style>
+  body {
+    background:#fdf6e3;
+    font-family:Georgia, serif;
+    padding:40px;
+    color:#000;
+  }
+
+  h1 {
+    font-size:2.5rem;
+    text-transform:uppercase;
+    letter-spacing:3px;
+  }
+
+  .project-item {
+    font-size:1.5rem;
+    padding:10px 20px;
+    display:inline-block;
+    background:#fff8dc;
+    border:2px solid #000;
+    transform:skew(-20deg);
+    margin:15px 0;
+    text-decoration:none;
+    color:#000;
+    font-weight:bold;
+    transition:background 0.2s;
+  }
+
+  .project-item:hover {
+    background:#f0e6c2;
+  }
+
+  .disabled {
+    color:grey;
+    border:none;
+    background:transparent;
+    transform:none;
+    cursor:default;
+  }
+
+  a.back {
+    display:block;
+    margin-top:30px;
+    font-size:1.2rem;
+    color:#000;
+    text-decoration:none;
+  }
+
+  a.back:hover {
+    text-decoration:underline;
+  }
+</style>
+</head>
+
+<body>
+
+<h1>PROJEKTOS</h1>
+
+<!-- Link a la página "Me cuerdo?" -->
+<a class="project-item" href="mecuerdo.html">Me cuerdo?</a><br>
+
+<!-- Proyecto desactivado -->
+<div class="project-item disabled">«Murámonos»</div>
+
+<!-- Volver a home -->
+<a class="back" href="index.html">← volver al inicio</a>
+
+</body>
+</html>
