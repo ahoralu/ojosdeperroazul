@@ -122,7 +122,7 @@
       modalBody.innerHTML = `
         <div class="project-list">
           <div onclick="openColgando()">Colgando</div>
-          <div onclick="openMuramonos()">Murámonos</div>
+          <div style="color: grey; cursor: default; text-decoration: none;">Murámonos</div>
         </div>
       `;
     };
@@ -146,14 +146,6 @@
       `;
     }
 
-    // CONTENIDO PARA "Murámonos"
-    function openMuramonos() {
-      modalTitle.textContent = "Murámonos";
-      modalBody.innerHTML = `
-        <p>Aquí puedes agregar texto, fotos o videos si lo deseas.</p>
-      `;
-    }
-
     // Cerrar modal
     closeModal.onclick = () => {
       modal.style.display = "none";
@@ -168,3 +160,4 @@
 
 </body>
 </html>
+
