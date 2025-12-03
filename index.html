@@ -1,162 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ojos de Perro Azul</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      font-family: Georgia, serif;
-      background: #ffffff;
-      position: relative;
-    }
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Georgia, serif;
+    background: #000; /* fondo negro */
+    position: relative;
+  }
 
-    .center-text {
-      font-size: 3rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: #000;
-      margin-bottom: 20px;
-    }
+  .center-text {
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff; /* texto blanco */
+    margin-bottom: 20px;
+  }
 
-    .click-text {
-      font-size: 1.8rem;
-      color: #000;
-      cursor: pointer;
-      text-decoration: underline;
-      margin-top: 10px;
-    }
+  .click-text {
+    font-size: 1.8rem;
+    color: #fff; /* texto blanco */
+    cursor: pointer;
+    text-decoration: underline;
+    margin-top: 10px;
+  }
 
-    .corner-text {
-      position: absolute;
-      bottom: 20px;
-      right: 25px;
-      font-size: 1.2rem;
-      font-family: monospace;
-      color: #000;
-    }
+  .corner-text {
+    position: absolute;
+    bottom: 20px;
+    right: 25px;
+    font-size: 1.2rem;
+    font-family: monospace;
+    color: #fff; /* texto blanco */
+  }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    }
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9); /* más oscuro */
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
 
-    .modal-content {
-      background: white;
-      padding: 30px;
-      max-width: 700px;
-      max-height: 80vh;
-      overflow-y: auto;
-      font-size: 1rem;
-      line-height: 1.5;
-      border-radius: 8px;
-    }
+  .modal-content {
+    background: #111; /* negro suave */
+    color: #fff; /* texto blanco */
+    padding: 30px;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 8px;
+  }
 
-    .close-btn {
-      float: right;
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
+  .close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+  }
 
-    .project-list div {
-      font-size: 1.3rem;
-      margin: 10px 0;
-      cursor: pointer;
-      text-decoration: underline;
-    }
+  .project-list div {
+    font-size: 1.3rem;
+    margin: 10px 0;
+    cursor: pointer;
+    text-decoration: underline;
+    color: #fff; /* texto blanco */
+  }
 
-    .media img, .media video {
-      width: 100%;
-      margin-top: 15px;
-      border-radius: 6px;
-    }
-  </style>
-</head>
-<body>
+  .project-list div[style] {
+    color: grey; /* Murámonos gris */
+  }
 
-  <div class="center-text">OJOS DE PERRO AZUL</div>
+  .media img, .media video {
+    width: 100%;
+    margin-top: 15px;
+    border-radius: 6px;
+  }
+</style>
 
-  <div class="click-text" id="openProjects">PROJEKTOS</div>
-
-  <div class="corner-text">l____</div>
-
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="modal-content" id="modalContent">
-      <span class="close-btn" id="closeModal">&times;</span>
-
-      <h2 id="modalTitle"></h2>
-      <div id="modalBody"></div>
-
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById("modal");
-    const closeModal = document.getElementById("closeModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalBody = document.getElementById("modalBody");
-
-    // Abrir lista de projektos
-    document.getElementById("openProjects").onclick = () => {
-      modal.style.display = "flex";
-
-      modalTitle.textContent = "PROJEKTOS";
-      modalBody.innerHTML = `
-        <div class="project-list">
-          <div onclick="openColgando()">Colgando</div>
-          <div style="color: grey; cursor: default; text-decoration: none;">Murámonos</div>
-        </div>
-      `;
-    };
-
-    // CONTENIDO PARA "COLGANDO"
-    function openColgando() {
-      modalTitle.textContent = "Colgando";
-
-      modalBody.innerHTML = `
-        <div class="media">
-          <img src="Colgando_s.jpg.PNG" alt="Foto de Colgando">
-
-          <video controls>
-            <source src="No importas_s.mp4" type="video/mp4">
-          </video>
-
-          <video controls>
-            <source src="Abandono_s.mp4" type="video/mp4">
-          </video>
-        </div>
-      `;
-    }
-
-    // Cerrar modal
-    closeModal.onclick = () => {
-      modal.style.display = "none";
-    };
-
-    window.onclick = (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  </script>
-
-</body>
-</html>
