@@ -1,92 +1,201 @@
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: Georgia, serif;
-    background: #000; /* fondo negro */
-    position: relative;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ojos de Perro Azul</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: Georgia, serif;
+      background: #fdf6e3; /* papel viejo, blanco amarillento */
+      position: relative;
+      color: #000; /* letras negras */
+    }
 
-  .center-text {
-    font-size: 3rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #fff; /* texto blanco */
-    margin-bottom: 20px;
-  }
+    .center-text {
+      font-size: 3rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #000;
+      margin-bottom: 20px;
+    }
 
-  .click-text {
-    font-size: 1.8rem;
-    color: #fff; /* texto blanco */
-    cursor: pointer;
-    text-decoration: underline;
-    margin-top: 10px;
-  }
+    /* Botón PROJEKTOS estilo paralelogramo */
+    .click-text {
+      font-size: 1.8rem;
+      color: #000;
+      cursor: pointer;
+      text-decoration: none;
+      background: #fff8dc;
+      padding: 12px 25px;
+      transform: skew(-20deg); /* paralelogramo */
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: bold;
+      border: 2px solid #000;
+      transition: background 0.3s;
+    }
 
-  .corner-text {
-    position: absolute;
-    bottom: 20px;
-    right: 25px;
-    font-size: 1.2rem;
-    font-family: monospace;
-    color: #fff; /* texto blanco */
-  }
+    .click-text:hover {
+      background: #f0e6c2;
+    }
 
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.9); /* más oscuro */
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-  }
+    .corner-text {
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+      font-size: 1.2rem;
+      font-family: monospace;
+      color: #000;
+    }
 
-  .modal-content {
-    background: #111; /* negro suave */
-    color: #fff; /* texto blanco */
-    padding: 30px;
-    max-width: 700px;
-    max-height: 80vh;
-    overflow-y: auto;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 8px;
-  }
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.2); /* transparente, suave */
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
 
-  .close-btn {
-    float: right;
-    cursor: pointer;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-  }
+    .modal-content {
+      background: #fdf6e3; /* mismo fondo de papel */
+      color: #000; /* letras negras */
+      padding: 30px;
+      max-width: 700px;
+      max-height: 80vh;
+      overflow-y: auto;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 0; /* bordes cuadrados */
+      border: 2px solid #000;
+    }
 
-  .project-list div {
-    font-size: 1.3rem;
-    margin: 10px 0;
-    cursor: pointer;
-    text-decoration: underline;
-    color: #fff; /* texto blanco */
-  }
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #000;
+    }
 
-  .project-list div[style] {
-    color: grey; /* Murámonos gris */
-  }
+    /* Lista de proyectos */
+    .project-list div {
+      font-size: 1.3rem;
+      margin: 10px 0;
+      cursor: pointer;
+      text-decoration: none;
+      background: #fff8dc;
+      padding: 10px 20px;
+      display: inline-block;
+      transform: skew(-20deg); /* paralelogramo */
+      border: 2px solid #000;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
 
-  .media img, .media video {
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 6px;
-  }
-</style>
+    .project-list div:hover {
+      background: #f0e6c2;
+    }
+
+    .project-list div[style] {
+      color: grey; /* Murámonos gris */
+      background: transparent;
+      border: none;
+      transform: none;
+      cursor: default;
+    }
+
+    .media img, .media video {
+      width: 100%;
+      margin-top: 15px;
+      border-radius: 6px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="center-text">OJOS DE PERRO AZUL</div>
+
+  <div class="click-text" id="openProjects">PROJEKTOS</div>
+
+  <div class="corner-text">l____</div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content" id="modalContent">
+      <span class="close-btn" id="closeModal">&times;</span>
+
+      <h2 id="modalTitle"></h2>
+      <div id="modalBody"></div>
+
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("modal");
+    const closeModal = document.getElementById("closeModal");
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody = document.getElementById("modalBody");
+
+    // Abrir lista de projektos
+    document.getElementById("openProjects").onclick = () => {
+      modal.style.display = "flex";
+
+      modalTitle.textContent = "PROJEKTOS";
+      modalBody.innerHTML = `
+        <div class="project-list">
+          <div onclick="openColgando()">Me cuelgo?</div>
+          <div style="color: grey; cursor: default; text-decoration: none;">«Murámonos»</div>
+        </div>
+      `;
+    };
+
+    // CONTENIDO PARA "ME CUELGO?"
+    function openColgando() {
+      modalTitle.textContent = "Me cuelgo?";
+
+      modalBody.innerHTML = `
+        <div class="media">
+          <img src="Colgando_s.jpg.PNG" alt="Foto de Me cuelgo?">
+
+          <video controls>
+            <source src="No importas_s.mp4" type="video/mp4">
+          </video>
+
+          <video controls>
+            <source src="Abandono_s.mp4" type="video/mp4">
+          </video>
+        </div>
+      `;
+    }
+
+    // Cerrar modal
+    closeModal.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>
+
 
