@@ -57,148 +57,21 @@
       color: #000;
     }
 
-    /* Modal */
-    .modal {
-      display: none;
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.2);
-      justify-content: center;
-      align-items: center;
-      padding: 40px;
-    }
-
-    .modal-content {
-      background: #fdf6e3;
-      color: #000;
-      padding: 30px;
-      max-width: 700px;
-      max-height: 80vh;
-      overflow-y: auto;
-      font-size: 1rem;
-      line-height: 1.5;
-      border-radius: 0;
-      border: 2px solid #000;
-    }
-
-    .close-btn {
-      float: right;
-      cursor: pointer;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #000;
-    }
-
-    /* Lista de proyectos */
-    .project-list div {
-      font-size: 1.3rem;
-      margin: 10px 0;
-      cursor: pointer;
-      text-decoration: none;
-      background: #fff8dc;
-      padding: 10px 20px;
-      display: inline-block;
-      transform: skew(-20deg);
-      border: 2px solid #000;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .project-list div:hover {
-      background: #f0e6c2;
-    }
-
-    .project-list div[style] {
-      color: grey; /* Murámonos gris */
-      background: transparent;
-      border: none;
-      transform: none;
-      cursor: default;
-    }
-
-    .media img, .media video {
-      width: 100%;
-      margin-top: 15px;
-      border-radius: 6px;
-    }
-
   </style>
 </head>
+
 <body>
 
   <div class="center-text">OJOS DE PERRO AZUL</div>
 
-  <div class="click-text" id="openProjects">PROJEKTOS</div>
+  <a class="click-text" href="projektos.html">PROJEKTOS</a>
 
   <!-- Email abajo centrado -->
   <div class="email-footer">ahora.lu@proton.me</div>
 
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="modal-content" id="modalContent">
-      <span class="close-btn" id="closeModal">&times;</span>
-
-      <h2 id="modalTitle"></h2>
-      <div id="modalBody"></div>
-
-    </div>
-  </div>
-
-  <script>
-    const modal = document.getElementById("modal");
-    const closeModal = document.getElementById("closeModal");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalBody = document.getElementById("modalBody");
-
-    // Abrir lista de projektos
-    document.getElementById("openProjects").onclick = () => {
-      modal.style.display = "flex";
-
-      modalTitle.textContent = "PROJEKTOS";
-      modalBody.innerHTML = `
-        <div class="project-list">
-          <div onclick="openMeCuerdo()">Me cuerdo?</div>
-          <div style="color: grey; cursor: default; text-decoration: none;">«Murámonos»</div>
-        </div>
-      `;
-    };
-
-    // CONTENIDO PARA "ME CUERDO?"
-    function openMeCuerdo() {
-      modalTitle.textContent = "Me cuerdo?";
-
-      modalBody.innerHTML = `
-        <div class="media">
-          <img src="Colgando_s.jpg.PNG" alt="Foto de Me cuerdo?">
-
-          <video controls>
-            <source src="No importas_s.mp4" type="video/mp4">
-          </video>
-
-          <video controls>
-            <source src="Abandono_s.mp4" type="video/mp4">
-          </video>
-        </div>
-      `;
-    }
-
-    // Cerrar modal
-    closeModal.onclick = () => {
-      modal.style.display = "none";
-    };
-
-    window.onclick = (e) => {
-      if (e.target === modal) {
-        modal.style.display = "none";
-      }
-    };
-  </script>
-
 </body>
 </html>
+
 
 
 
