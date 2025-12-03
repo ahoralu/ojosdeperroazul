@@ -8,22 +8,21 @@
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       font-family: Georgia, serif;
-      background: #fdf6e3; /* papel viejo, blanco amarillento */
+      background: #fdf6e3; /* papel viejo */
+      color: #000;
       position: relative;
-      color: #000; /* letras negras */
     }
 
     .center-text {
       font-size: 3rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #000;
       margin-bottom: 20px;
     }
 
@@ -35,7 +34,7 @@
       text-decoration: none;
       background: #fff8dc;
       padding: 12px 25px;
-      transform: skew(-20deg); /* paralelogramo */
+      transform: skew(-20deg);
       display: inline-block;
       margin-top: 10px;
       font-weight: bold;
@@ -47,12 +46,14 @@
       background: #f0e6c2;
     }
 
-    .corner-text {
+    /* Email abajo centrado */
+    .email-footer {
       position: absolute;
       bottom: 20px;
-      right: 25px;
-      font-size: 1.2rem;
-      font-family: monospace;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: Georgia, serif;
+      font-size: 1rem;
       color: #000;
     }
 
@@ -64,22 +65,22 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.2); /* transparente, suave */
+      background: rgba(0,0,0,0.2);
       justify-content: center;
       align-items: center;
       padding: 40px;
     }
 
     .modal-content {
-      background: #fdf6e3; /* mismo fondo de papel */
-      color: #000; /* letras negras */
+      background: #fdf6e3;
+      color: #000;
       padding: 30px;
       max-width: 700px;
       max-height: 80vh;
       overflow-y: auto;
       font-size: 1rem;
       line-height: 1.5;
-      border-radius: 0; /* bordes cuadrados */
+      border-radius: 0;
       border: 2px solid #000;
     }
 
@@ -100,7 +101,7 @@
       background: #fff8dc;
       padding: 10px 20px;
       display: inline-block;
-      transform: skew(-20deg); /* paralelogramo */
+      transform: skew(-20deg);
       border: 2px solid #000;
       font-weight: bold;
       transition: background 0.3s;
@@ -132,7 +133,8 @@
 
   <div class="click-text" id="openProjects">PROJEKTOS</div>
 
-  <div class="corner-text">l____; ahora.lu@proton.me</div>
+  <!-- Email abajo centrado -->
+  <div class="email-footer">ahora.lu@proton.me</div>
 
   <!-- Modal -->
   <div class="modal" id="modal">
@@ -158,19 +160,19 @@
       modalTitle.textContent = "PROJEKTOS";
       modalBody.innerHTML = `
         <div class="project-list">
-          <div onclick="openColgando()">Me cuelgo?</div>
+          <div onclick="openMeCuerdo()">Me cuerdo?</div>
           <div style="color: grey; cursor: default; text-decoration: none;">«Murámonos»</div>
         </div>
       `;
     };
 
-    // CONTENIDO PARA "ME CUELGO?"
-    function openColgando() {
+    // CONTENIDO PARA "ME CUERDO?"
+    function openMeCuerdo() {
       modalTitle.textContent = "Me cuerdo?";
 
       modalBody.innerHTML = `
         <div class="media">
-          <img src="Colgando_s.jpg.PNG" alt="Foto de Me cuelgo?">
+          <img src="Colgando_s.jpg.PNG" alt="Foto de Me cuerdo?">
 
           <video controls>
             <source src="No importas_s.mp4" type="video/mp4">
@@ -197,5 +199,6 @@
 
 </body>
 </html>
+
 
 
