@@ -1,24 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Me cuerdo?</title>
+
 <style>
   body {
     background:#fdf6e3;
     font-family:Georgia, serif;
     padding:40px;
     color:#000;
+    text-align:center;
   }
 
-  img, video {
+  h1 {
+    font-size:2.5rem;
+    margin-bottom:5px;
+  }
+
+  h2 {
+    font-size:1.2rem;
+    margin-bottom:30px;
+    font-weight:normal;
+  }
+
+  img {
+    width:300px; /* foto pequeña */
+    margin-bottom:30px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:6px;
+  }
+
+  p {
+    font-size:1rem;
+    line-height:1.5;
+    max-width:700px;
+    margin:0 auto 30px auto;
+    text-align:left;
+  }
+
+  .video-row {
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+
+  .video-row video {
+    width:300px;
+    cursor:pointer;
+  }
+
+  /* Modal */
+  .modal {
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
     width:100%;
-    margin-top:15px;
-    border-radius: 6px;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    z-index:1000;
   }
 
-  a {
+  .modal-content {
+    position:relative;
+    max-width:90%;
+    max-height:90%;
+  }
+
+  .modal-content video {
+    width:100%;
+    height:auto;
+  }
+
+  .close-btn {
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    background:#fff8dc;
+    color:#000;
+    font-size:1.5rem;
+    font-weight:bold;
+    border:2px solid #000;
+    padding:2px 8px;
+    cursor:pointer;
+    border-radius:50%;
+  }
+
+  a.back {
     display:block;
     margin-top:30px;
     font-size:1.2rem;
@@ -26,30 +103,64 @@
     text-decoration:none;
   }
 
-  a:hover {
+  a.back:hover {
     text-decoration:underline;
   }
+
 </style>
 </head>
 
 <body>
 
 <h1>Me cuerdo?</h1>
+<h2>Junio 2023</h2>
 
-<!-- FOTO -->
 <img src="Colgando_s.jpg.PNG" alt="Foto Me cuerdo?">
 
-<!-- VIDEOS -->
-<video controls>
-  <source src="No importas_s.mp4" type="video/mp4">
-</video>
+<p>«Bailar colgando. Bailar como si ya estuviésemos matándonos.»  
+Sobre el apego, dejar ir, re-nacer.</p>
 
-<video controls>
-  <source src="Abandono_s.mp4" type="video/mp4">
-</video>
+<div class="video-row">
+  <video class="click-video" src="No importas_s.mp4" type="video/mp4"></video>
+  <video class="click-video" src="Abandono_s.mp4" type="video/mp4"></video>
+</div>
 
-<!-- VOLVER -->
-<a href="projektos.html">← volver a PROJEKTOS</a>
+<!-- Modal -->
+<div class="modal" id="videoModal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeModal">&times;</span>
+    <video id="modalVideo" controls></video>
+  </div>
+</div>
+
+<a class="back" href="projektos.html">← volver a PROJEKTOS</a>
+
+<script>
+const modal = document.getElementById("videoModal");
+const modalVideo = document.getElementById("modalVideo");
+const closeModal = document.getElementById("closeModal");
+
+document.querySelectorAll(".click-video").forEach(video => {
+  video.addEventListener("click", () => {
+    modalVideo.src = video.src;
+    modal.style.display = "flex";
+    modalVideo.play();
+  });
+});
+
+closeModal.onclick = () => {
+  modalVideo.pause();
+  modal.style.display = "none";
+};
+
+window.onclick = (e) => {
+  if(e.target === modal) {
+    modalVideo.pause();
+    modal.style.display = "none";
+  }
+};
+</script>
 
 </body>
 </html>
+
